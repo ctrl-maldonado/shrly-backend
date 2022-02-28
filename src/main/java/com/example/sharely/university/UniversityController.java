@@ -22,7 +22,7 @@ public class UniversityController {
     }
 
     @RequestMapping(value = "/adduniversity")
-    public void addUniversity (@RequestBody University university){
-        universityService.addUniversity(university);
+    public University addUniversity (@RequestBody University university){
+        return universityService.addUniversity(university);
     }
 }

@@ -1,6 +1,8 @@
 package com.example.sharely.user;
 
+import com.example.sharely.Repository.UniversityRepository;
 import com.example.sharely.Repository.UserRepository;
+import com.example.sharely.university.University;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,13 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public void addUser(User user) {
+    @Autowired
+    UniversityRepository universityRepository;
+
+    public User addUser(User user) {
         user.setCreationDate(System.currentTimeMillis());
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-        System.out.println(formatter.format(user.getCreationDate()));
-        userRepository.save(user);
+        return userRepository.save(user);
+
     }
 
     public User getSingleUser(Integer userId) {

@@ -17,8 +17,9 @@ public class User {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="university", referencedColumnName="universityId")
+    @JoinColumn(name="universityId", referencedColumnName="universityId")
     private University university;
+
 
     public User() {
     }
@@ -56,20 +57,20 @@ public class User {
         this.password = password;
     }
 
-    public University getUniversityId() {
-        return university;
-    }
-
-    public void setUniversityId(University universityId) {
-        this.university = universityId;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public University getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University university) {
+        this.university = university;
     }
 
     @Override

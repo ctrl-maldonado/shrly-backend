@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -21,8 +22,8 @@ public class UserController {
     UserRepository userRepository;
 
     @RequestMapping(value = "/adduser")
-    public void addUser(@RequestBody User user){
-        userService.addUser(user);
+    public User addUser(@RequestBody User user){
+        return userService.addUser(user);
     }
 
     @RequestMapping(value = "/users")

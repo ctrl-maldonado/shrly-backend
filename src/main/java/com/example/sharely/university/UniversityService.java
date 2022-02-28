@@ -10,8 +10,8 @@ public class UniversityService {
     @Autowired
     UniversityRepository universityRepository;
 
-    public void addUniversity(University university) {
+    public University addUniversity(University university) {
         university.setCreationDate(System.currentTimeMillis());
-        universityRepository.save(university);
+        return universityRepository.save(university);
     }
 }
