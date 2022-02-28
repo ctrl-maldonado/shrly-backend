@@ -3,6 +3,7 @@ package com.example.sharely.user;
 import com.example.sharely.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,5 +26,10 @@ public class UserController {
     @RequestMapping(value = "/users")
     public ResponseEntity getAllUsers (){
         return ResponseEntity.ok(this.userRepository.findAll());
+    }
+
+    @RequestMapping(value = "/user/{userId}")
+    public User getSingleUser (@PathVariable Integer userId){
+        return userService.getSingleUser(userId);
     }
 }

@@ -4,17 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.Date;
 
-@Entity( name = "ShrlyUser" )
+
+@Entity( name = "SrlyUser" ) //Table name is called 'ShrlyUser' because the are interefering problems with native Table called 'user'
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int userId;
 
     private String userName;
-    private Date creationDate;
+    private Long creationDate;
     private String password;
     private int universityId;
     private String email;
@@ -38,11 +38,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Date getCreationDate() {
+    public Long getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Date creationDate) {
+    public void setCreationDate(long creationDate) {
         this.creationDate = creationDate;
     }
 
