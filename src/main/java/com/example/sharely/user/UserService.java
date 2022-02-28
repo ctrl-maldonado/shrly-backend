@@ -23,4 +23,6 @@ public class UserService {
     public User getSingleUser(Integer userId) {
         return userRepository.findByUserId(userId);
     }
+
+    //kommentar
 }
