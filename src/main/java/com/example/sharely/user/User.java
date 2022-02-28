@@ -1,12 +1,10 @@
 package com.example.sharely.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.sharely.university.University;
 
+import javax.persistence.*;
 
-@Entity( name = "SrlyUser" ) //Table name is called 'ShrlyUser' because the are interefering problems with native Table called 'user'
+@Entity( name = "ShrlyUser" ) //Table name is called 'ShrlyUser' because the are interefering problems with native Table called 'user'
 public class User {
 
     @Id
@@ -16,11 +14,15 @@ public class User {
     private String userName;
     private Long creationDate;
     private String password;
-    private int universityId;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name="university", referencedColumnName="universityId")
+    private University university;
 
     public User() {
     }
+
 
     public int getUserId() {
         return userId;
@@ -54,12 +56,12 @@ public class User {
         this.password = password;
     }
 
-    public int getUniversityId() {
-        return universityId;
+    public University getUniversityId() {
+        return university;
     }
 
-    public void setUniversityId(int universityId) {
-        this.universityId = universityId;
+    public void setUniversityId(University universityId) {
+        this.university = universityId;
     }
 
     public String getEmail() {
@@ -77,7 +79,7 @@ public class User {
                 ", userName='" + userName + '\'' +
                 ", creationDate=" + creationDate +
                 ", password='" + password + '\'' +
-                ", universityId=" + universityId +
+                ", university=" + university +
                 ", email='" + email + '\'' +
                 '}';
     }
