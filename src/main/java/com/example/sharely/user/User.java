@@ -1,8 +1,12 @@
 package com.example.sharely.user;
 
+import com.example.sharely.document.Document;
 import com.example.sharely.university.University;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity( name = "ShrlyUser" ) //Table name is called 'ShrlyUser' because the are interefering problems with native Table called 'user'
 public class User {
@@ -20,6 +24,9 @@ public class User {
     @JoinColumn(name="universityId", referencedColumnName="universityId")
     private University university;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Document> documents = new HashSet<>();
 
     public User() {
     }
